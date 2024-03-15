@@ -2,8 +2,13 @@
 $message = $_GET['monitorFriendlyName'].'
 網址：'.$_GET['monitorURL'].'
 問題：'.$_GET['alertDetails'].'
-時間：'.date('Y-m-d H:i:s', $_GET['alertDateTime']).'
-告警持續時間：'.$_GET['alertFriendlyDuration'];
+時間：'.date('Y-m-d H:i:s', $_GET['alertDateTime']);
+
+if(empty($_GET['alertFriendlyDuration']) == false)
+{
+$message .= '
+告警持續時間：'.$_GET['alertFriendlyDuration'];	
+}
 
 $curl_data['message'] = '
 >> 站台異常通知 <<
